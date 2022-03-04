@@ -10,14 +10,32 @@
 		1E4F2207289415248145FE23 /* Pods_JobsityiOSChallenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2737723A5C3985D0BA381715 /* Pods_JobsityiOSChallenge.framework */; };
 		37CDE637E1FCF69D4A0C0629 /* Pods_JobsityiOSChallenge_JobsityiOSChallengeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F18444297DFC1BDBB07EEFCB /* Pods_JobsityiOSChallenge_JobsityiOSChallengeUITests.framework */; };
 		81ADA2B3F470DBF3A0BC0676 /* Pods_JobsityiOSChallengeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 146351B9C78AC8988B2ACD51 /* Pods_JobsityiOSChallengeTests.framework */; };
+		9123046127D0F84A00EE013E /* Codable+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9123046027D0F84A00EE013E /* Codable+Extensions.swift */; };
+		9123046327D0F88D00EE013E /* SeriesListTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9123046227D0F88D00EE013E /* SeriesListTarget.swift */; };
+		9123046627D0F9DF00EE013E /* SeriesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9123046527D0F9DF00EE013E /* SeriesModel.swift */; };
+		9123046A27D11EDC00EE013E /* DateFormatter+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9123046927D11EDC00EE013E /* DateFormatter+Extensions.swift */; };
+		9123046C27D1256500EE013E /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9123046B27D1256500EE013E /* UIImageView+Extensions.swift */; };
+		9123046E27D1350B00EE013E /* UILabel+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9123046D27D1350B00EE013E /* UILabel+Extensions.swift */; };
 		913A5F6A27D00CAA005533F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913A5F6927D00CAA005533F7 /* AppDelegate.swift */; };
 		913A5F6C27D00CAA005533F7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913A5F6B27D00CAA005533F7 /* SceneDelegate.swift */; };
-		913A5F6E27D00CAA005533F7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913A5F6D27D00CAA005533F7 /* ViewController.swift */; };
 		913A5F7327D00CAC005533F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 913A5F7227D00CAC005533F7 /* Assets.xcassets */; };
 		913A5F7627D00CAC005533F7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 913A5F7427D00CAC005533F7 /* LaunchScreen.storyboard */; };
 		913A5F8127D00CAC005533F7 /* JobsityiOSChallengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913A5F8027D00CAC005533F7 /* JobsityiOSChallengeTests.swift */; };
 		913A5F8B27D00CAC005533F7 /* JobsityiOSChallengeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913A5F8A27D00CAC005533F7 /* JobsityiOSChallengeUITests.swift */; };
 		913A5F8D27D00CAC005533F7 /* JobsityiOSChallengeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913A5F8C27D00CAC005533F7 /* JobsityiOSChallengeUITestsLaunchTests.swift */; };
+		91C519B927D017B200C9ABEF /* SeriesListFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C519B827D017B200C9ABEF /* SeriesListFactory.swift */; };
+		91C519BB27D017BE00C9ABEF /* SeriesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C519BA27D017BE00C9ABEF /* SeriesListViewController.swift */; };
+		91C519BD27D017C600C9ABEF /* SeriesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C519BC27D017C600C9ABEF /* SeriesListView.swift */; };
+		91C519BF27D017CF00C9ABEF /* SeriesListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C519BE27D017CF00C9ABEF /* SeriesListInteractor.swift */; };
+		91C519C227D01A2C00C9ABEF /* SeriesListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C519C127D01A2C00C9ABEF /* SeriesListRouter.swift */; };
+		91C519C527D01D9500C9ABEF /* ViewCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C519C427D01D9500C9ABEF /* ViewCode.swift */; };
+		91C519C727D020D000C9ABEF /* SeriesListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C519C627D020D000C9ABEF /* SeriesListTableViewCell.swift */; };
+		91D5E6AF27D02582005BBD7F /* NetworkConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D5E6AE27D02582005BBD7F /* NetworkConstants.swift */; };
+		91D5E6B127D0278A005BBD7F /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D5E6B027D0278A005BBD7F /* NetworkService.swift */; };
+		91D5E6B327D02902005BBD7F /* NetworkTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D5E6B227D02902005BBD7F /* NetworkTarget.swift */; };
+		91D5E6B527D0E969005BBD7F /* RequestErrorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D5E6B427D0E969005BBD7F /* RequestErrorModel.swift */; };
+		91D5E6B827D0E9FE005BBD7F /* SeriesListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D5E6B727D0E9FE005BBD7F /* SeriesListService.swift */; };
+		91D5E6BA27D0F79C005BBD7F /* SeriesListServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D5E6B927D0F79C005BBD7F /* SeriesListServiceError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,10 +61,15 @@
 		318D23CF7F769CCC749C599D /* Pods-JobsityiOSChallenge-JobsityiOSChallengeUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JobsityiOSChallenge-JobsityiOSChallengeUITests.debug.xcconfig"; path = "Target Support Files/Pods-JobsityiOSChallenge-JobsityiOSChallengeUITests/Pods-JobsityiOSChallenge-JobsityiOSChallengeUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		6B7F8A3101619600C75E9D9E /* Pods-JobsityiOSChallengeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JobsityiOSChallengeTests.release.xcconfig"; path = "Target Support Files/Pods-JobsityiOSChallengeTests/Pods-JobsityiOSChallengeTests.release.xcconfig"; sourceTree = "<group>"; };
 		8B7474AD1BEA09E5D4E51744 /* Pods-JobsityiOSChallenge-JobsityiOSChallengeUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JobsityiOSChallenge-JobsityiOSChallengeUITests.release.xcconfig"; path = "Target Support Files/Pods-JobsityiOSChallenge-JobsityiOSChallengeUITests/Pods-JobsityiOSChallenge-JobsityiOSChallengeUITests.release.xcconfig"; sourceTree = "<group>"; };
+		9123046027D0F84A00EE013E /* Codable+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Codable+Extensions.swift"; sourceTree = "<group>"; };
+		9123046227D0F88D00EE013E /* SeriesListTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesListTarget.swift; sourceTree = "<group>"; };
+		9123046527D0F9DF00EE013E /* SeriesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesModel.swift; sourceTree = "<group>"; };
+		9123046927D11EDC00EE013E /* DateFormatter+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Extensions.swift"; sourceTree = "<group>"; };
+		9123046B27D1256500EE013E /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
+		9123046D27D1350B00EE013E /* UILabel+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extensions.swift"; sourceTree = "<group>"; };
 		913A5F6627D00CAA005533F7 /* JobsityiOSChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JobsityiOSChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		913A5F6927D00CAA005533F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		913A5F6B27D00CAA005533F7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		913A5F6D27D00CAA005533F7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		913A5F7227D00CAC005533F7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		913A5F7527D00CAC005533F7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		913A5F7727D00CAC005533F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -55,6 +78,19 @@
 		913A5F8627D00CAC005533F7 /* JobsityiOSChallengeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JobsityiOSChallengeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		913A5F8A27D00CAC005533F7 /* JobsityiOSChallengeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobsityiOSChallengeUITests.swift; sourceTree = "<group>"; };
 		913A5F8C27D00CAC005533F7 /* JobsityiOSChallengeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobsityiOSChallengeUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		91C519B827D017B200C9ABEF /* SeriesListFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesListFactory.swift; sourceTree = "<group>"; };
+		91C519BA27D017BE00C9ABEF /* SeriesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesListViewController.swift; sourceTree = "<group>"; };
+		91C519BC27D017C600C9ABEF /* SeriesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesListView.swift; sourceTree = "<group>"; };
+		91C519BE27D017CF00C9ABEF /* SeriesListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesListInteractor.swift; sourceTree = "<group>"; };
+		91C519C127D01A2C00C9ABEF /* SeriesListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesListRouter.swift; sourceTree = "<group>"; };
+		91C519C427D01D9500C9ABEF /* ViewCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCode.swift; sourceTree = "<group>"; };
+		91C519C627D020D000C9ABEF /* SeriesListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesListTableViewCell.swift; sourceTree = "<group>"; };
+		91D5E6AE27D02582005BBD7F /* NetworkConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConstants.swift; sourceTree = "<group>"; };
+		91D5E6B027D0278A005BBD7F /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		91D5E6B227D02902005BBD7F /* NetworkTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTarget.swift; sourceTree = "<group>"; };
+		91D5E6B427D0E969005BBD7F /* RequestErrorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestErrorModel.swift; sourceTree = "<group>"; };
+		91D5E6B727D0E9FE005BBD7F /* SeriesListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesListService.swift; sourceTree = "<group>"; };
+		91D5E6B927D0F79C005BBD7F /* SeriesListServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesListServiceError.swift; sourceTree = "<group>"; };
 		9EE53EC858AA95885C864FF5 /* Pods-JobsityiOSChallenge.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JobsityiOSChallenge.debug.xcconfig"; path = "Target Support Files/Pods-JobsityiOSChallenge/Pods-JobsityiOSChallenge.debug.xcconfig"; sourceTree = "<group>"; };
 		C8679440D48B58A092E15534 /* Pods-JobsityiOSChallenge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JobsityiOSChallenge.release.xcconfig"; path = "Target Support Files/Pods-JobsityiOSChallenge/Pods-JobsityiOSChallenge.release.xcconfig"; sourceTree = "<group>"; };
 		F18444297DFC1BDBB07EEFCB /* Pods_JobsityiOSChallenge_JobsityiOSChallengeUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JobsityiOSChallenge_JobsityiOSChallengeUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -112,6 +148,22 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		9123046427D0F9B500EE013E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9123046527D0F9DF00EE013E /* SeriesModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		9123046F27D1434800EE013E /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				91C519B727D0179800C9ABEF /* SeriesListModule */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
 		913A5F5D27D00CAA005533F7 = {
 			isa = PBXGroup;
 			children = (
@@ -137,12 +189,11 @@
 		913A5F6827D00CAA005533F7 /* JobsityiOSChallenge */ = {
 			isa = PBXGroup;
 			children = (
-				913A5F6927D00CAA005533F7 /* AppDelegate.swift */,
-				913A5F6B27D00CAA005533F7 /* SceneDelegate.swift */,
-				913A5F6D27D00CAA005533F7 /* ViewController.swift */,
-				913A5F7227D00CAC005533F7 /* Assets.xcassets */,
-				913A5F7427D00CAC005533F7 /* LaunchScreen.storyboard */,
-				913A5F7727D00CAC005533F7 /* Info.plist */,
+				9123046F27D1434800EE013E /* Modules */,
+				91D5E6BB27D0F80A005BBD7F /* Extensions */,
+				91C519C827D021B000C9ABEF /* Networking */,
+				91C519C327D01D2600C9ABEF /* Helpers */,
+				91C519B627D0177500C9ABEF /* Main */,
 			);
 			path = JobsityiOSChallenge;
 			sourceTree = "<group>";
@@ -162,6 +213,73 @@
 				913A5F8C27D00CAC005533F7 /* JobsityiOSChallengeUITestsLaunchTests.swift */,
 			);
 			path = JobsityiOSChallengeUITests;
+			sourceTree = "<group>";
+		};
+		91C519B627D0177500C9ABEF /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				913A5F6927D00CAA005533F7 /* AppDelegate.swift */,
+				913A5F6B27D00CAA005533F7 /* SceneDelegate.swift */,
+				913A5F7427D00CAC005533F7 /* LaunchScreen.storyboard */,
+				913A5F7727D00CAC005533F7 /* Info.plist */,
+				913A5F7227D00CAC005533F7 /* Assets.xcassets */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		91C519B727D0179800C9ABEF /* SeriesListModule */ = {
+			isa = PBXGroup;
+			children = (
+				9123046427D0F9B500EE013E /* Model */,
+				91C519B827D017B200C9ABEF /* SeriesListFactory.swift */,
+				91C519BA27D017BE00C9ABEF /* SeriesListViewController.swift */,
+				91C519BC27D017C600C9ABEF /* SeriesListView.swift */,
+				91C519BE27D017CF00C9ABEF /* SeriesListInteractor.swift */,
+				91C519C127D01A2C00C9ABEF /* SeriesListRouter.swift */,
+				91C519C627D020D000C9ABEF /* SeriesListTableViewCell.swift */,
+			);
+			path = SeriesListModule;
+			sourceTree = "<group>";
+		};
+		91C519C327D01D2600C9ABEF /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				91C519C427D01D9500C9ABEF /* ViewCode.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		91C519C827D021B000C9ABEF /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				91D5E6B627D0E97D005BBD7F /* SeriesList */,
+				91D5E6AE27D02582005BBD7F /* NetworkConstants.swift */,
+				91D5E6B027D0278A005BBD7F /* NetworkService.swift */,
+				91D5E6B227D02902005BBD7F /* NetworkTarget.swift */,
+				91D5E6B427D0E969005BBD7F /* RequestErrorModel.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		91D5E6B627D0E97D005BBD7F /* SeriesList */ = {
+			isa = PBXGroup;
+			children = (
+				91D5E6B727D0E9FE005BBD7F /* SeriesListService.swift */,
+				91D5E6B927D0F79C005BBD7F /* SeriesListServiceError.swift */,
+				9123046227D0F88D00EE013E /* SeriesListTarget.swift */,
+			);
+			path = SeriesList;
+			sourceTree = "<group>";
+		};
+		91D5E6BB27D0F80A005BBD7F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				9123046027D0F84A00EE013E /* Codable+Extensions.swift */,
+				9123046927D11EDC00EE013E /* DateFormatter+Extensions.swift */,
+				9123046B27D1256500EE013E /* UIImageView+Extensions.swift */,
+				9123046D27D1350B00EE013E /* UILabel+Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -402,9 +520,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				913A5F6E27D00CAA005533F7 /* ViewController.swift in Sources */,
+				91D5E6B127D0278A005BBD7F /* NetworkService.swift in Sources */,
+				9123046E27D1350B00EE013E /* UILabel+Extensions.swift in Sources */,
+				9123046A27D11EDC00EE013E /* DateFormatter+Extensions.swift in Sources */,
+				91C519BD27D017C600C9ABEF /* SeriesListView.swift in Sources */,
+				91C519B927D017B200C9ABEF /* SeriesListFactory.swift in Sources */,
+				91D5E6B327D02902005BBD7F /* NetworkTarget.swift in Sources */,
+				9123046627D0F9DF00EE013E /* SeriesModel.swift in Sources */,
+				91C519C727D020D000C9ABEF /* SeriesListTableViewCell.swift in Sources */,
 				913A5F6A27D00CAA005533F7 /* AppDelegate.swift in Sources */,
+				9123046327D0F88D00EE013E /* SeriesListTarget.swift in Sources */,
 				913A5F6C27D00CAA005533F7 /* SceneDelegate.swift in Sources */,
+				9123046C27D1256500EE013E /* UIImageView+Extensions.swift in Sources */,
+				91D5E6AF27D02582005BBD7F /* NetworkConstants.swift in Sources */,
+				9123046127D0F84A00EE013E /* Codable+Extensions.swift in Sources */,
+				91D5E6B827D0E9FE005BBD7F /* SeriesListService.swift in Sources */,
+				91C519BB27D017BE00C9ABEF /* SeriesListViewController.swift in Sources */,
+				91D5E6B527D0E969005BBD7F /* RequestErrorModel.swift in Sources */,
+				91C519C227D01A2C00C9ABEF /* SeriesListRouter.swift in Sources */,
+				91D5E6BA27D0F79C005BBD7F /* SeriesListServiceError.swift in Sources */,
+				91C519BF27D017CF00C9ABEF /* SeriesListInteractor.swift in Sources */,
+				91C519C527D01D9500C9ABEF /* ViewCode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -578,11 +714,12 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = T9C59C8C3J;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = JobsityiOSChallenge/Info.plist;
+				INFOPLIST_FILE = JobsityiOSChallenge/Main/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -606,11 +743,12 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = T9C59C8C3J;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = JobsityiOSChallenge/Info.plist;
+				INFOPLIST_FILE = JobsityiOSChallenge/Main/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
