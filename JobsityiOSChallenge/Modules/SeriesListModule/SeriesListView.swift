@@ -145,6 +145,11 @@ extension SeriesListViewImpl: UITableViewDelegate, UITableViewDataSource {
         return rowCount
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let model: Series = viewState == .listing ? seriesModel[indexPath.row] : searchSeriesModel[indexPath.row]
+        interactor?.didSelectSeries(model: model)
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: SeriesListTableViewCell.identifier, for: indexPath) as? SeriesListTableViewCell {
             let seriesModel: Series = viewState == .listing ? seriesModel[indexPath.row] : searchSeriesModel[indexPath.row]

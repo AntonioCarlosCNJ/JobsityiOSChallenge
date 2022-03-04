@@ -39,8 +39,12 @@ extension NetworkService {
                 return
             }
             
-            let result = try? T.decode(from: data)
-            complete(.success(result))
+            do {
+                let result = try T.decode(from: data)
+                complete(.success(result))
+            } catch {
+                print(error.localizedDescription)
+            }
         }.resume()
     }
     

@@ -8,7 +8,7 @@
 import UIKit
 
 protocol SeriesListRouter {
-    
+    func goToSeriesDetail(with model: Series)
 }
 
 class SeriesListRouterImpl: SeriesListRouter {
@@ -16,4 +16,9 @@ class SeriesListRouterImpl: SeriesListRouter {
     //MARK: - Properties
     weak var navigationController: UINavigationController?
     
+    func goToSeriesDetail(with model: Series) {
+        guard let navigationController = navigationController else {return}
+
+        navigationController.pushViewController(SeriesDetailFactory.makeController(with: model, navigationController: navigationController), animated: true)
+    }
 }

@@ -26,6 +26,7 @@ class SeriesListViewController: UIViewController, SeriesListPresenter {
     }
     
     override func viewDidLoad() {
+        super.viewDidLoad()
         listView?.viewDidLoad()
     }
     
@@ -40,5 +41,4 @@ class SeriesListViewController: UIViewController, SeriesListPresenter {
     func presentSearchedResults(with model: [SeriesSearchModel]) {
         listView?.updateSeriesSearchModel(with: model)
     }
-    
 }
