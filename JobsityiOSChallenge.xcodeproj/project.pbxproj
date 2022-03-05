@@ -92,6 +92,7 @@
 		913A5F8627D00CAC005533F7 /* JobsityiOSChallengeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JobsityiOSChallengeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		913A5F8A27D00CAC005533F7 /* JobsityiOSChallengeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobsityiOSChallengeUITests.swift; sourceTree = "<group>"; };
 		913A5F8C27D00CAC005533F7 /* JobsityiOSChallengeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobsityiOSChallengeUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		91C0126527D30C4A00113CB2 /* JobsityiOSChallenge.ipa */ = {isa = PBXFileReference; lastKnownFileType = file; path = JobsityiOSChallenge.ipa; sourceTree = "<group>"; };
 		91C519B827D017B200C9ABEF /* SeriesListFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesListFactory.swift; sourceTree = "<group>"; };
 		91C519BA27D017BE00C9ABEF /* SeriesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesListViewController.swift; sourceTree = "<group>"; };
 		91C519BC27D017C600C9ABEF /* SeriesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesListView.swift; sourceTree = "<group>"; };
@@ -219,6 +220,7 @@
 		913A5F6827D00CAA005533F7 /* JobsityiOSChallenge */ = {
 			isa = PBXGroup;
 			children = (
+				91C0126427D30C3700113CB2 /* Distribution */,
 				9123046F27D1434800EE013E /* Modules */,
 				91D5E6BB27D0F80A005BBD7F /* Extensions */,
 				91C519C827D021B000C9ABEF /* Networking */,
@@ -243,6 +245,14 @@
 				913A5F8C27D00CAC005533F7 /* JobsityiOSChallengeUITestsLaunchTests.swift */,
 			);
 			path = JobsityiOSChallengeUITests;
+			sourceTree = "<group>";
+		};
+		91C0126427D30C3700113CB2 /* Distribution */ = {
+			isa = PBXGroup;
+			children = (
+				91C0126527D30C4A00113CB2 /* JobsityiOSChallenge.ipa */,
+			);
+			path = Distribution;
 			sourceTree = "<group>";
 		};
 		91C519B627D0177500C9ABEF /* Main */ = {
