@@ -8,6 +8,8 @@
 import Foundation
 
 protocol SeriesListInteractor {
+    var isFirstLoading: Bool {get}
+    
     func getSeries()
     func searchSeries(with query: String)
     func didSelectSeries(model: Series)
@@ -20,6 +22,10 @@ class SeriesListInteractorImpl: SeriesListInteractor {
     var router: SeriesListRouter?
     private let service: SeriesListServiceImpl
     
+    var isFirstLoading: Bool {
+        return page == 0
+    }
+    private var isFetching: Bool = false
     private var page: Int = 0
     
     //MARK: - Initializers
@@ -29,14 +35,17 @@ class SeriesListInteractorImpl: SeriesListInteractor {
     
     //MARK: - Methods
     func getSeries() {
+        guard !isFetching else {return}
+        isFetching = true
         service.list(page: page, handle: {[weak self] result in
             guard let self = self else {return}
+            self.isFetching = false
             switch result {
             case .success(let seriesModel):
                 self.presenter?.presentSeries(with: seriesModel ?? [])
                 self.page += 1
             case .error(let error):
-                self.presenter?.presentError(with: SeriesListServiceError(code: error?.response?.statusCode ?? 500))
+                self.presenter?.presentError(with: error?.message ?? "")
             }
         })
     }
@@ -47,7 +56,7 @@ class SeriesListInteractorImpl: SeriesListInteractor {
             case .success(let seriesModel):
                 self?.presenter?.presentSearchedResults(with: seriesModel ?? [])
             case .error(let error):
-                self?.presenter?.presentError(with: SeriesListServiceError(code: error?.response?.statusCode ?? 500))
+                self?.presenter?.presentError(with: error?.message ?? "")
             }
         })
     }

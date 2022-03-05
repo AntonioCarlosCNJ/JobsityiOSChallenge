@@ -9,6 +9,7 @@ import Foundation
 
 protocol SeriesDetailInteractor {
     func getEpisodes(with id: Int)
+    func didTapInEpisode(_ episode: EpisodeModel)
 }
 
 class SeriesDetailInteractorImpl: SeriesDetailInteractor {
@@ -32,9 +33,13 @@ class SeriesDetailInteractorImpl: SeriesDetailInteractor {
             case .success(let episodes):
                 self.presenter?.presentEpisodes(with: self.createSeasonModels(with: episodes))
             case .error(let error):
-                self.presenter?.presentError(with: SeriesDetailServiceError(code: error?.response?.statusCode ?? 500))
+                self.presenter?.presentError(with: error?.message ?? "")
             }
         })
+    }
+    
+    func didTapInEpisode(_ episode: EpisodeModel) {
+        router?.goToDetailEpisode(with: episode)
     }
     
     private func createSeasonModels(with episodes: [EpisodeModel]?) -> [SeasonModel] {

@@ -8,7 +8,7 @@
 import UIKit
 
 protocol SeriesDetailRouter {
-    
+    func goToDetailEpisode(with episode: EpisodeModel)
 }
 
 class SeriesDetailRouterImpl: SeriesDetailRouter {
@@ -17,7 +17,11 @@ class SeriesDetailRouterImpl: SeriesDetailRouter {
     weak var navigationController: UINavigationController?
     
     //MARK: - Methods
-    
+    func goToDetailEpisode(with episode: EpisodeModel) {
+        guard let navigationController = navigationController else {return}
+
+        navigationController.pushViewController(EpisodeDetailFactory.makeController(with: episode, navigationController: navigationController), animated: true)
+    }
 }
 
 

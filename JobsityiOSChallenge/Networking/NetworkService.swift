@@ -9,7 +9,7 @@ import Foundation
 
 enum NetworkResult<T> {
     case success(T?)
-    case error(RequestErrorModel?)
+    case error(APIError?)
 }
 
 protocol NetworkService {
@@ -29,21 +29,20 @@ extension NetworkService {
     func request<T: Decodable>(target: Target, then complete: @escaping ServiceCompletion<T>) {
         provider.dataTask(with: createRequest(target)) { (responseData, response , error) in
             if let error = error {
-                let errorModel = RequestErrorModel(error: error, response: response as? HTTPURLResponse)
-                complete(.error(errorModel))
+                complete(.error(.failed(error: error)))
                 return
             }
-            
+
             guard let data = responseData else {
-                complete(.success(nil))
+                complete(.error(.unknownError))
                 return
             }
-            
+
             do {
                 let result = try T.decode(from: data)
                 complete(.success(result))
             } catch {
-                print(error.localizedDescription)
+                complete(.error(.errorDecode))
             }
         }.resume()
     }
@@ -51,8 +50,7 @@ extension NetworkService {
     func request(target: Target, then complete: @escaping ServiceCompletion<Void>) {
         provider.dataTask(with: createRequest(target)) { (responseData, response, error) in
             if let error = error {
-                let errorModel = RequestErrorModel(error: error, response: response as? HTTPURLResponse)
-                complete(.error(errorModel))
+                complete(.error(.failed(error: error)))
                 return
             }
             complete(.success(nil))

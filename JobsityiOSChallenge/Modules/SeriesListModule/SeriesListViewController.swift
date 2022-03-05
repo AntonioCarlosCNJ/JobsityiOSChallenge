@@ -10,7 +10,7 @@ import UIKit
 protocol SeriesListPresenter {
     func presentSeries(with model: [SeriesModel])
     func presentSearchedResults(with model: [SeriesSearchModel])
-    func presentError(with error: SeriesListServiceError)
+    func presentError(with errorMessage: String)
 }
 
 class SeriesListViewController: UIViewController, SeriesListPresenter {
@@ -32,13 +32,16 @@ class SeriesListViewController: UIViewController, SeriesListPresenter {
     
     func presentSeries(with model: [SeriesModel]) {
         listView?.updateSeriesModel(with: model)
+        listView?.stopLoading()
     }
     
-    func presentError(with error: SeriesListServiceError) {
-        print(error.description)
+    func presentError(with errorMessage: String) {
+        listView?.showErrorMessage(errorMessage, in: self)
+        listView?.stopLoading()
     }
     
     func presentSearchedResults(with model: [SeriesSearchModel]) {
         listView?.updateSeriesSearchModel(with: model)
+        listView?.stopLoading()
     }
 }

@@ -13,11 +13,15 @@ protocol SeriesListView: UIView {
     func setNavigationItem(with navigationItem: UINavigationItem)
     func updateSeriesModel(with model: [SeriesModel])
     func updateSeriesSearchModel(with model: [SeriesSearchModel])
+    func showErrorMessage(_ errorMessage: String, in vc: UIViewController)
+    func startLoading()
+    func stopLoading()
 }
 
 enum ViewState {
     case listing
     case searching
+    case error
 }
 
 class SeriesListViewImpl: UIView, SeriesListView {
@@ -30,6 +34,7 @@ class SeriesListViewImpl: UIView, SeriesListView {
     
     var viewState: ViewState = .listing
     var navigationItem: UINavigationItem?
+    var query: String = ""
     
     //MARK: - Initializers
     init() {
@@ -48,10 +53,15 @@ class SeriesListViewImpl: UIView, SeriesListView {
         return tableView
     }()
     
+    private lazy var activityIndicator: UIActivityIndicatorView = {
+        let activity = UIActivityIndicatorView(style: .large)
+        activity.frame = CGRect(x: 0, y: 0, width: tableView.frame.width, height: 44)
+        return activity
+    }()
+    
     private lazy var searchBar: UISearchBar = {
         let searchBar = UISearchBar()
         searchBar.barStyle = .default
-        searchBar.showsCancelButton = true
         searchBar.placeholder = " Search Here....."
         searchBar.delegate = self
         searchBar.sizeToFit()
@@ -67,6 +77,7 @@ class SeriesListViewImpl: UIView, SeriesListView {
     
     //MARK: - Methods
     func viewDidLoad() {
+        configureActivityIndicatorToShowTheFirstLoading()
         interactor?.getSeries()
         
         configureTableView()
@@ -93,6 +104,29 @@ class SeriesListViewImpl: UIView, SeriesListView {
         }
     }
     
+    func startLoading() {
+        DispatchQueue.main.async {
+            self.activityIndicator.startAnimating()
+        }
+    }
+    
+    func stopLoading() {
+        DispatchQueue.main.async {
+            self.activityIndicator.removeFromSuperview()
+            self.activityIndicator.snp.removeConstraints()
+            self.activityIndicator.stopAnimating()
+        }
+    }
+    
+    func showErrorMessage(_ errorMessage: String, in vc: UIViewController) {
+        DispatchQueue.main.async {
+            let alert = UIAlertController.createErrorAlert(with: errorMessage) {
+                self.viewState == .listing ? self.interactor?.getSeries() : self.interactor?.searchSeries(with: self.query)
+            }
+            vc.present(alert, animated: true, completion: nil)
+        }
+    }
+    
     private func configureTableView() {
         tableView.register(SeriesListTableViewCell.self, forCellReuseIdentifier: SeriesListTableViewCell.identifier)
         
@@ -105,6 +139,7 @@ class SeriesListViewImpl: UIView, SeriesListView {
     }
     
     private func toggleCancelButton(to value: Bool) {
+        searchBar.setShowsCancelButton(value, animated: true)
         if let cancelButton = searchBar.value(forKey: "cancelButton") as? UIButton {
             cancelButton.isEnabled = value
         }
@@ -112,6 +147,16 @@ class SeriesListViewImpl: UIView, SeriesListView {
     
     private func toggleEmptyImageView(to value: Bool) {
         emptyImageView.isHidden = value
+    }
+    
+    private func configureActivityIndicatorToShowTheFirstLoading() {
+        addSubview(activityIndicator)
+        
+        activityIndicator.snp.makeConstraints { make in
+            make.centerY.centerX.equalToSuperview()
+        }
+        
+        activityIndicator.startAnimating()
     }
 }
 
@@ -141,7 +186,7 @@ extension SeriesListViewImpl: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let rowCount = viewState == .listing ? seriesModel.count : searchSeriesModel.count
-        toggleEmptyImageView(to: rowCount == 0 ? false : true)
+        toggleEmptyImageView(to: rowCount == 0 ? ((interactor?.isFirstLoading) ?? false)  : true)
         return rowCount
     }
     
@@ -158,6 +203,20 @@ extension SeriesListViewImpl: UITableViewDelegate, UITableViewDataSource {
         }
         return UITableViewCell()
     }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let lastRowIndex = tableView.numberOfRows(inSection: 0) - 1
+        if indexPath.row == lastRowIndex && viewState != .searching && interactor?.isFirstLoading == false {
+            activityIndicator = UIActivityIndicatorView(style: .medium)
+            activityIndicator.frame = CGRect(x: 0, y: 0, width: tableView.frame.width, height: 44)
+            
+            self.tableView.tableFooterView = activityIndicator
+            self.tableView.tableFooterView?.isHidden = false
+            
+            startLoading()
+            interactor?.getSeries()
+        }
+    }
 }
 
 extension SeriesListViewImpl: UISearchBarDelegate {
@@ -171,7 +230,8 @@ extension SeriesListViewImpl: UISearchBarDelegate {
         searchBar.resignFirstResponder()
         toggleCancelButton(to: true)
         guard let query = searchBar.text else {return}
-        interactor?.searchSeries(with: query)
+        self.query = query
+        interactor?.searchSeries(with: self.query)
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {

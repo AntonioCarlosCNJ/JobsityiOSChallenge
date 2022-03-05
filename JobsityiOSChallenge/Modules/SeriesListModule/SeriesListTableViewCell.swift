@@ -55,7 +55,7 @@ class SeriesListTableViewCell: UITableViewCell {
     }
     
     private func configurePosterImageView(with imageUrl: String) {
-        guard let url = URL(string: imageUrl) else {return}
+        guard let url = URL(string: imageUrl) else {posterImageView.image = UIImage(named: "noImage"); posterImageView.contentMode = .scaleAspectFit; return}
         posterImageView.load(url: url)
     }
     

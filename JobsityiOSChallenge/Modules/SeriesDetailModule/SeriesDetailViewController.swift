@@ -8,7 +8,7 @@
 import UIKit
 
 protocol SeriesDetailPresenter {
-    func presentError(with error: SeriesDetailServiceError)
+    func presentError(with errorMessage: String)
     func presentEpisodes(with seasonModels: [SeasonModel])
 }
 
@@ -33,8 +33,8 @@ class SeriesDetailViewController: UIViewController, SeriesDetailPresenter {
         detailView?.updateSeasonModels(with: seasonModels)
     }
     
-    func presentError(with error: SeriesDetailServiceError) {
-        print(error.description)
+    func presentError(with errorMessage: String) {
+        print(errorMessage)
     }
 
 }

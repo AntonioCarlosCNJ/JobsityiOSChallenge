@@ -11,6 +11,7 @@ protocol SeriesDetailView: UIView {
     func viewDidLoad()
     func setNavigationTitle(in navigationItem: UINavigationItem)
     func updateSeasonModels(with seasonModels: [SeasonModel])
+    func showErrorMessage(_ message: String, vc: UIViewController)
 }
 
 class SeriesDetailViewImpl: UIView, SeriesDetailView {
@@ -20,7 +21,7 @@ class SeriesDetailViewImpl: UIView, SeriesDetailView {
     var model: Series
     var seasonModels: [SeasonModel] = []
     
-    //MARK: - Initializer
+    //MARK: - Initializers
     init(with model: Series) {
         self.model = model
         super.init(frame: .zero)
@@ -75,6 +76,22 @@ class SeriesDetailViewImpl: UIView, SeriesDetailView {
         return lbl
     }()
     
+    private let premieredDateLabel: UILabel = {
+        let lbl = UILabel()
+        lbl.textAlignment = .left
+        lbl.numberOfLines = 1
+        lbl.font = UIFont.systemFont(ofSize: 15)
+        return lbl
+    }()
+    
+    private let endedDateLabel: UILabel = {
+        let lbl = UILabel()
+        lbl.textAlignment = .left
+        lbl.numberOfLines = 1
+        lbl.font = UIFont.systemFont(ofSize: 15)
+        return lbl
+    }()
+    
     private let genresLabel: UILabel = {
         let lbl = UILabel()
         lbl.textAlignment = .left
@@ -116,6 +133,8 @@ class SeriesDetailViewImpl: UIView, SeriesDetailView {
         configurePosterImageView()
         configureNameLabel()
         configureGenresLabel()
+        configurePremieredDateLabel()
+        configureEndedDateLabel()
         configureAirsTimeLabel()
         configureSummaryLabel()
         
@@ -124,6 +143,15 @@ class SeriesDetailViewImpl: UIView, SeriesDetailView {
     
     func setNavigationTitle(in navigationItem: UINavigationItem) {
         navigationItem.title = model.name
+    }
+    
+    func showErrorMessage(_ message: String, vc: UIViewController) {
+        DispatchQueue.main.async {
+            let alert = UIAlertController.createErrorAlert(with: message) {
+                self.interactor?.getEpisodes(with: self.model.id)
+            }
+            vc.present(alert, animated: true, completion: nil)
+        }
     }
     
     func updateSeasonModels(with seasonModels: [SeasonModel]) {
@@ -136,7 +164,7 @@ class SeriesDetailViewImpl: UIView, SeriesDetailView {
     }
     
     private func configurePosterImageView() {
-        guard let url = URL(string: model.imageUrl ?? "") else {return}
+        guard let url = URL(string: model.imageUrl ?? "") else {posterImageView.image = UIImage(named: "noImage"); posterImageView.contentMode = .scaleAspectFit; return}
         posterImageView.load(url: url)
     }
     
@@ -146,6 +174,18 @@ class SeriesDetailViewImpl: UIView, SeriesDetailView {
     
     private func configureGenresLabel() {
         genresLabel.attributedText(withString: "Genres: \((model.genres?.joined(separator: ", ")) ?? "")", boldString: "Genres", font: UIFont.systemFont(ofSize: 15))
+    }
+    
+    private func configurePremieredDateLabel() {
+        guard let premieredDate = model.premieredDate else {premieredDateLabel.isHidden = true; return}
+        
+        premieredDateLabel.attributedText(withString: "Premiered Date: \( DateFormatter.MMMdyyyy.string(from: premieredDate))", boldString: "Premiered Date", font: .systemFont(ofSize: 15))
+    }
+    
+    private func configureEndedDateLabel() {
+        guard let endedDate = model.endedDate else {endedDateLabel.isHidden = true; return}
+        
+        endedDateLabel.attributedText(withString: "Ended Date: \( DateFormatter.MMMdyyyy.string(from: endedDate))", boldString: "Ended Date", font: .systemFont(ofSize: 15))
     }
     
     private func configureAirsTimeLabel() {
@@ -197,6 +237,8 @@ extension SeriesDetailViewImpl: ViewCode {
         mainInformationStackView.addArrangedSubview(nameLabel)
         mainInformationStackView.addArrangedSubview(summaryLabel)
         mainInformationStackView.addArrangedSubview(genresLabel)
+        mainInformationStackView.addArrangedSubview(premieredDateLabel)
+        mainInformationStackView.addArrangedSubview(endedDateLabel)
         mainInformationStackView.addArrangedSubview(airsTimeLabel)
     }
     
@@ -211,6 +253,14 @@ extension SeriesDetailViewImpl: ViewCode {
         genresLabel.snp.makeConstraints { make in
             make.width.equalTo(mainInformationStackView.snp.width)
         }
+        
+        endedDateLabel.snp.makeConstraints { make in
+            make.width.equalTo(mainInformationStackView.snp.width)
+        }
+        
+        premieredDateLabel.snp.makeConstraints { make in
+            make.width.equalTo(mainInformationStackView.snp.width)
+        }
 
         airsTimeLabel.snp.makeConstraints { make in
             make.width.equalTo(mainInformationStackView.snp.width)
@@ -219,6 +269,10 @@ extension SeriesDetailViewImpl: ViewCode {
         summaryLabel.snp.makeConstraints { make in
             make.width.equalTo(mainInformationStackView.snp.width)
         }
+    }
+    
+    func additionalSetup() {
+        mainInformationStackView.setCustomSpacing(15, after: summaryLabel)
     }
 
     private func setupScrollViewConstraints() {
@@ -287,5 +341,10 @@ extension SeriesDetailViewImpl: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let episode = seasonModels[indexPath.section].episodes[indexPath.row]
+        interactor?.didTapInEpisode(episode)
     }
 }
